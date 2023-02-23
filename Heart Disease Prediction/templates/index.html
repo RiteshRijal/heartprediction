@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Heart Disease Prediction</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+    <section class="vh-200 gradient-custom"  style="background-color: #2779e2;">
+        <div class="container py-5 h-100">
+          <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+              <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5">
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Heart Disease Prediction</h3>
+                  <form method="POST"  action="/calculate">
+      
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+      
+                        <div class="form-outline">
+                          <input type="number" id="age"  name="age" class="form-control form-control-lg" required/>
+                          <label class="form-label" for="Age">Age</label>
+                        </div>
+      
+                      </div>
+                      <div class="col-md-6 mb-4">
+      
+                        <div class="form-outline">
+                          <input type="number" id="thalach" name="thalach" class="form-control form-control-lg" />
+                          <label class="form-label" for="thalach">Maximum Heart Rate Achieved:</label>
+                        </div>
+      
+                      </div>
+                    </div>
+      
+                    <div class="row">
+                      <div class="col-md-6 mb-4 d-flex align-items-center">
+      
+                        <div class="form-outline datepicker w-100">
+                          <input type="number" class="form-control form-control-lg" id="chol" name="chol" />
+                          <label for="chol" class="form-label">Serum Cholesterol (mg/dL):</label>
+                        </div>
+      
+                      </div>
+                      <div class="col-md-6 mb-4">
+      
+                        <h6 class="mb-2 pb-1">SEX: </h6>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="sex" id="sex"
+                            value="0" checked />
+                          <label class="form-check-label" for="femaleGender">Female</label>
+                        </div>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="sex" id="sex"
+                            value="1" />
+                          <label class="form-check-label" for="male">Male</label>
+                        </div>
+      
+                      </div>
+
+                      
+
+
+
+                      <div class="col-md-6 mb-4">
+      
+                        <h6 class="mb-2 pb-1">Resting Electrocardiographic Results:</h6>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="restecg" id="restecg"
+                            value="0" checked />
+                          <label class="form-check-label" for="Normal">Normal</label>
+                        </div>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="restecg" id="restecg"
+                            value="1" />
+                          <label class="form-check-label" for="Abnormality">ST-T Wave Abnormality</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="restecg" id="restecg"
+                              value="2" />
+                            <label class="form-check-label" for="Left_Ventricular">Left Ventricular Hypertrophy</label>
+                          </div>
+      
+                      </div>
+
+
+
+
+                      <div class="col-md-6 mb-4">
+      
+                        <h6 class="mb-2 pb-1">Chest Pain Type: </h6>
+          
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="cp" id="cp"
+                            value="0" checked />
+
+                          <label class="form-check-label" for="TypicalAngina">Typical Angina</label>
+                        </div>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="cp" id="cp"
+                            value="1" />
+                          <label class="form-check-label" for="Atypical_Angina">Atypical Angina</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cp" id="cp"
+                              value="2" />
+                            <label class="form-check-label" for="Non_Anginal_Pain">Non-Anginal Pain</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cp" id="cp"
+                              value="3" />
+                            <label class="form-check-label" for="Asymptomatic">Asymptomatic</label>
+                          </div>
+      
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+      
+                        <h6 class="mb-2 pb-1">Fasting Blood Sugar (> 120 mg/dL): </h6>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="fbs" id="fbs"
+                            value="0" checked />
+                          <label class="form-check-label" for="NO">NO</label>
+                        </div>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="fbs" id="fbs"
+                            value="1" />
+                          <label class="form-check-label" for="YES">Yes</label>
+                        </div>
+      
+                      </div>
+
+
+                      <div class="col-md-6 mb-4">
+      
+                        <h6 class="mb-2 pb-1">Exercise Induced Angina: </h6>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="exang" id="exang"
+                            value="0" checked />
+                          <label class="form-check-label" for="NO">NO</label>
+                        </div>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="exang" id="exang"
+                            value="1" />
+                          <label class="form-check-label" for="YES">Yes</label>
+                        </div>
+      
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+      
+                        <h6 class="mb-2 pb-1">Slope of the Peak Exercise ST Segment:</h6>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="slope" id="slope"
+                            value="0" checked />
+                          <label class="form-check-label" for="Upsloping">Upsloping</label>
+                        </div>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="slope" id="slope"
+                            value="1" />
+                          <label class="form-check-label" for="Flat">Flat</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="slope" id="slope"
+                              value="2" />
+                            <label class="form-check-label" for="Downsloping">Downsloping</label>
+                          </div>
+      
+                      </div>
+                    </div>
+                    
+      
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+      
+                        <div class="form-outline">
+                          <input type="number" id="trestbps" name="trestbps" class="form-control form-control-lg" />
+                          <label class="form-label" for="trestbps">Resting Blood Pressure (mm Hg):</label>
+                        </div>
+      
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+      
+                        <div class="form-outline">
+                          <input type="number" id="oldpeak" step="0.1" name="oldpeak"class="form-control form-control-lg" />
+                          <label class="form-label" for="oldpeak">ST Depression Induced by Exercise Relative to Rest:</label>
+                        </div>
+      
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+      
+                        <div class="form-outline">
+                          <input type="number" id="ca" name="ca" class="form-control form-control-lg" min="0" max="3" />
+                          <label class="form-label" for="ca">Number of Major Vessels (0-3)</label>
+                        </div>
+                      </div>
+                    
+                      
+      
+                      <div class="col-md-6 mb-4">
+      
+                        <h6 class="mb-2 pb-1">Thalassemia:</h6>
+      
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="thal" id="thal"
+                            value="0" checked />
+                          <label class="form-check-label" for="Upsloping">Upsloping</label>
+                        </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="thal" id="thal"
+                          value="1" />
+                        <label class="form-check-label" for="Flat">Fixed Defect</label>
+                      </div>
+
+                      <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="thal" id="thal"
+                            value="2" />
+                          <label class="form-check-label" for="Downsloping">Reversible Defect</label>
+                        </div>
+    
+                    </div>
+                  </div>
+
+                    
+                  </div>
+      
+                    <div class="mt-4 pt-2">
+                      <input class="btn btn-primary btn-lg" type="submit" value="Predict" />
+                    </div>
+
+                    {% if result %}
+                     <h4 class="mt-4 mb-4">The Flower Prediction is {{result}}</h4>
+                    {% endif %}
+      
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+    
+</body>
+</html>
